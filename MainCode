@@ -1759,7 +1759,7 @@ function LocalPlayerChatted(msg)
 		notify("Set all to off.")
 	end
 	if command("ad") then
-		chat("This is Oblivion Admin, the most powerful script for prison life, made by KGB / Snoop")
+		chat("This is Oblivion Admin, the most powerful script for prison life, made by (KGB / MiniSnoopThug) and Selecto_kx")
 		notify("Bragged to all skids.")
 	end
 	if command("closeroblox") or command("endrbx") or command('leave') or command('quit') then
