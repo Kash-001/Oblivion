@@ -680,6 +680,7 @@ allcmds = {
 	"--- Player ---",
 	"re / respawn",
 	"to [plr]",
+	"sword",
 	"sheild",
 	"armor",
 	"kit",
@@ -689,6 +690,7 @@ allcmds = {
 	"sa / spam arrest [plr, off]",
 	"bullets [count]",
 	"remove/ removehomescreen",
+	"ssa - super spam arrest",
 	"",
 	"--- Server ---",
 	"execute, exe",
@@ -1933,6 +1935,79 @@ function LocalPlayerChatted(msg)
 		flySpeed = arg2
 		notify("Changed fly speed.")
 	end
+	if command("sword") then
+	    local Sword = Instance.new("Tool")
+local Handle = Instance.new("Part")
+local Mesh = Instance.new("SpecialMesh")
+local Unsheath = Instance.new("Sound")
+local SwordSlash = Instance.new("Sound")
+SwordSlash.Name = "SwordSlash"
+Unsheath.Name = "Unsheath"
+Unsheath.SoundId = "http://www.roblox.com/asset/?id=12222225"
+Unsheath.Volume = 1
+SwordSlash.SoundId = "http://www.roblox.com/asset/?id=12222216"
+SwordSlash.Volume = .7
+Unsheath.Parent = Handle
+SwordSlash.Parent = Handle
+Mesh.Parent = Handle
+Mesh.MeshId = "rbxassetid://500489614"
+Mesh.Scale = Vector3.new(5,5,5)
+Handle.Name = "Handle"
+Handle.Parent = Sword
+Sword.TextureId = "rbxasset://Textures/Sword128.png"
+Sword.GripForward = Vector3.new(-1,0,0)
+Sword.GripPos = Vector3.new(0,0,-1.5)
+Sword.GripRight = Vector3.new(0,1,0)
+Sword.GripUp = Vector3.new(0,0,1)
+Sword.ToolTip = "GayKiller"
+Sword.CanBeDropped = false
+Sword.RequiresHandle = true
+Handle.Orientation = Vector3.new(-46.24, 42.14, 50.93)
+Handle.Position = Vector3.new(-3.174,1.57,3.04)
+Handle.CanCollide = true
+Handle.Size = Vector3.new(1,.8,4)
+Mesh.MeshId = "rbxasset://fonts/sword.mesh"
+Mesh.MeshType = "FileMesh"
+Mesh.Offset = Vector3.new(0,0,0)
+Mesh.Scale = Vector3.new(1,1,1)
+Mesh.TextureId = "rbxasset://textures/SwordTexture.png"
+Sword.Equipped:Connect(function()
+Unsheath:Play()
+end)
+Sword.Activated:Connect(function()
+SwordSlash:Play()
+Handle.Touched:Connect(function(Handle)
+p=game.Players:FindFirstChild(Handle.Parent.Name)
+game.ReplicatedStorage.meleeEvent:FireServer(p)
+end)
+local Anim = Instance.new("StringValue")
+Anim.Name = "toolanim"
+Anim.Value = "Slash"
+Anim.Parent = Sword
+end)
+Mouse_Icon = "rbxasset://textures/GunCursor.png"
+Reloading_Icon = "rbxasset://textures/GunWaitCursor.png"
+Tool = Sword
+Mouse = nil
+function UpdateIcon()
+if Mouse then
+Mouse.Icon = Tool.Enabled and Mouse_Icon or Reloading_Icon
+end
+end
+function OnEquipped(ToolMouse)
+Mouse = ToolMouse
+UpdateIcon()
+end
+function OnChanged(Property)
+if Property == "Enabled" then
+UpdateIcon()
+end
+end
+Tool.Equipped:Connect(OnEquipped)
+Tool.Changed:Connect(OnChanged)
+Sword.Parent = game.Players.LocalPlayer.Backpack
+	    end
+	
 	if command("nc") or command("noclip") then
 		states.noclip = true
 		notify("Turned on noclip.")
@@ -2551,6 +2626,20 @@ end
 	if command("bring") then
 		bring(GetPlayerFromString(arg2))
 		notify("Brought "..GetPlayerFromString(arg2).Name)
+	end
+	if command("ssa") then
+		bring(GetPlayerFromString(arg2))
+		    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-925, 95, 2138)
+	local arrest = workspace..player..Torso
+local a = 1
+local b = 1
+repeat
+    repeat
+         workspace.Remote.arrest:InvokeServer(arrest)
+         a = a + 1
+         until( a > 300)
+        b = b + 1
+        until( b > 20 ) 
 	end
 	if command("crim") then
 		teleport(GetPlayerFromString(arg2),CFrame.new(-919.280396, 95.3272018, 2138.47168))
