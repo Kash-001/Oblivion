@@ -1802,7 +1802,7 @@ function LocalPlayerChatted(msg)
 		smite(UserName, 10000, tonumber(arg2) or 25)
 		notify("Spiked Server.")
 	end
-	if command("ssa") or command("crat") then
+	if command("ssa") then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/BenLaden007/SuperSpamArrest/main/MainCode"))()
 	end
 	if command("nex") or command("nexus") then
@@ -2630,25 +2630,6 @@ end
 		bring(GetPlayerFromString(arg2))
 		notify("Brought "..GetPlayerFromString(arg2).Name)
 	end
-	if command("ssa") then
-		bring(GetPlayerFromString(arg2))
-		    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-925, 95, 2138)
-	local arrest = workspace..player..Torso
-local a = 1
-local b = 1
-repeat
-    repeat
-         workspace.Remote.arrest:InvokeServer(arrest)
-         a = a + 1
-         until( a > 300)
-        b = b + 1
-        until( b > 20 ) 
-	end
-	if command("crim") then
-		teleport(GetPlayerFromString(arg2),CFrame.new(-919.280396, 95.3272018, 2138.47168))
-		notify("Crimmed "..GetPlayerFromString(arg2).Name)
-	end
-end
 
 function AdminPlayerChatted(msg,player)
 	split_message = msg:split(" ")
@@ -2939,7 +2920,7 @@ table.insert(connections, game:GetService("RunService").RenderStepped:Connect(fu
 		for _,v in pairs(game.Players:GetPlayers()) do
 			if v ~= game.Players.LocalPlayer then
 				pcall(function()
-					if v.Character.HumanoidRootPart.Position.Y > 5000 then
+					if v.Character.HumanoidRootPart.Posi tion.Y > 5000 then
 						game.Players.StarterGui:SetCore("SendNotification", {
 							Title = "Suspected Invis Player.",
 							Text = v.Name,"is a suspected skid.",
