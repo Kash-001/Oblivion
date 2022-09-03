@@ -1807,7 +1807,7 @@ function LocalPlayerChatted(msg)
 		notify("Spiked Server.")
 	end
 	if command("ssa") then
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/BenLaden007/SuperSpamArrest/main/MainCode"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kash-001/Reworked-SpamArrest/main/gui.lua"))()
 	end
 	if command("nex") or command("nexus") then
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(916.297546, 99.9900055, 2383.50928)
